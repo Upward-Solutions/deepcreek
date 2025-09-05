@@ -18,16 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Configuración SMTP (ejemplo con Mailtrap para pruebas)
         $mail->isSMTP();
-//         $mail->Host       = 'sandbox.smtp.mailtrap.io';
-//         $mail->SMTPAuth   = true;
-//         $mail->Port       = 587;
-//         $mail->Username   = 'TU_USERNAME_MAILTRAP'; // 👈 reemplazar
-//         $mail->Password   = 'TU_PASSWORD_MAILTRAP'; // 👈 reemplazar
         $mail->Host       = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth   = true;
-        $mail->Username   = '1ec0905bd31b46';
-        $mail->Password   = 'b1d349e63bed8e';
-        $mail->Port       = 25;
+        $mail->Port       = 587;
+        $mail->Username   = 'TU_USERNAME_MAILTRAP';
+        $mail->Password   = 'TU_PASSWORD_MAILTRAP';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
         // Remitente y destinatario
