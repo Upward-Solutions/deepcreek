@@ -47,9 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->send();
 
         if ($idioma === 'en') {
-            header("Location: /en/home.html?status=error");
+            header("Location: /en/home.html?status=ok");
         } else {
-            header("Location: /index.html?status=error");
+            header("Location: /index.html?status=ok");
         }
         exit;
     } catch (Exception $e) {
