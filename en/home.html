@@ -2166,7 +2166,7 @@
                                                                                                aria-atomic="true"></p>
                                                             <ul></ul>
                                                         </div>
-                                                        <form action="../scripts/contact.php" method="post"
+                                                        <form action="../scripts/contact.php?idioma=en" method="post"
                                                               class="wpcf7-form init"
                                                               aria-label="Formulario de contacto"
                                                               novalidate="novalidate" data-status="init"
@@ -2995,5 +2995,18 @@ var ElementPackConfig = {
 <script id="modula-js-before"> const modulaMetaVars = []; </script>
 <script src="https://deepcreeksolutions.com/wp-content/plugins/modula-best-grid-gallery/assets/js/front/jquery-modula.min.js?ver=2.12.24"
         id="modula-js"></script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("status") === "ok") {
+        const flash = document.getElementById("flash");
+        flash.style.display = "block";
+        setTimeout(() => flash.style.display = "none", 4000);
+    }
+    if (params.get("status") === "error") {
+        const flash = document.getElementById("flash-error");
+        flash.style.display = "block";
+        setTimeout(() => flash.style.display = "none", 4000);
+    }
+</script>
 </body>
 </html>

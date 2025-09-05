@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = new PHPMailer(true);
 
     try {
+        $idioma = $_GET['idioma'] ?? 'es';
         // Configuración SMTP (Mailtrap)
         $mail->isSMTP();
         $mail->Host       = 'sandbox.smtp.mailtrap.io';
@@ -46,10 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $mail->send();
 
-        header("Location: site/index.html?status=ok");
+        if ($idioma === 'en') {
+            header("Location: /en/home.html?status=error");
+        } else {
+            header("Location: /index.html?status=error");
+        }
         exit;
     } catch (Exception $e) {
-        header("Location: site/index.html?status=error");
+        if ($idioma === 'en') {
+            header("Location: /en/home.html?status=error");
+        } else {
+            header("Location: /index.html?status=error");
+        }
         exit;
     }
 }

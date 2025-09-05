@@ -8,6 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 try {
+    $idioma = $_GET['idioma'] ?? 'es';
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
@@ -41,11 +42,19 @@ try {
     ";
     $mail->AltBody = "Nombre: $name\nEmail: $email\nTeléfono: $phone\nMensaje:\n$message";
     $mail->send();
-    header("Location: site/index.html?status=ok");
-} catch (Exception $e) {
-//     echo "Error: {$mail->ErrorInfo}";
-    header("Location: site/index.html?status=error");
-} finally {
+        if ($idioma === 'en') {
+            header("Location: /en/home.html?status=error");
+        } else {
+            header("Location: /index.html?status=error");
+        }
     exit;
+    } catch (Exception $e) {
+        if ($idioma === 'en') {
+            header("Location: /en/home.html?status=error");
+        } else {
+            header("Location: /index.html?status=error");
+        }
+        exit;
 }
+
 

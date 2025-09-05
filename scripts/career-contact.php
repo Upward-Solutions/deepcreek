@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/../vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $idioma = $_GET['idioma'] ?? 'es';
     // Sanitizar entradas
     $name     = htmlspecialchars($_POST['your-name'] ?? '');
     $surname  = htmlspecialchars($_POST['your-surnanme'] ?? '');
@@ -50,12 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $mail->send();
 
-        // Redirigir con parámetro de éxito
-        header("Location: site/index.html?status=ok");
+        if ($idioma === 'en') {
+            header("Location: /en/home.html?status=error");
+        } else {
+            header("Location: /index.html?status=error");
+        }
         exit;
     } catch (Exception $e) {
-        // Redirigir con parámetro de error
-        header("Location: site/index.html?status=error");
+        if ($idioma === 'en') {
+            header("Location: /en/home.html?status=error");
+        } else {
+            header("Location: /index.html?status=error");
+        }
         exit;
     }
 }
