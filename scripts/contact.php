@@ -10,21 +10,16 @@ $mail = new PHPMailer(true);
 try {
     $idioma = $_GET['idioma'] ?? 'es';
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
+//     $mail->Host       = 'smtp.gmail.com';
+    $mail->Host       = 'c2661787.ferozo.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'contacto@deepcreeksolutions.es';
-    $mail->Username   = 'info@deepcreeksolutions.com';
-    $mail->Password   = 'CONTRASEÑA_O_APP_PASSWORD';
+    $mail->Username   = 'info@deepcreeksolutions.es';
+    $mail->Password   = '/loUkDq1cU';
     $mail->Port       = 587;
-//     $mail->Host       = 'sandbox.smtp.mailtrap.io';
-//     $mail->SMTPAuth   = true;
-//     $mail->Username   = '1ec0905bd31b46';
-//     $mail->Password   = 'b1d349e63bed8e';
-//     $mail->Port       = 25;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
-    $mail->setFrom('contacto@deepcreeksolutions.es', 'Formulario Web');
-    $mail->addAddress('tudestino@otrodominio.com');
+    $mail->setFrom('info@deepcreeksolutions.es', 'Formulario Web');
+    $mail->addAddress('info@deepcreeksolutions.es');
 
     $name    = $_POST['your-name']    ?? '';
     $email   = $_POST['your-email']   ?? '';

@@ -18,20 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $idioma = $_GET['idioma'] ?? 'es';
-        // Configuración SMTP (Mailtrap)
         $mail->isSMTP();
-        $mail->Host       = 'sandbox.smtp.mailtrap.io';
+        $mail->Host       = 'c2661787.ferozo.com';
         $mail->SMTPAuth   = true;
+        $mail->Username   = 'info@deepcreeksolutions.es';
+        $mail->Password   = '/loUkDq1cU';
         $mail->Port       = 587;
-        $mail->Username   = 'TU_USERNAME_MAILTRAP'; // 👈 reemplazar
-        $mail->Password   = 'TU_PASSWORD_MAILTRAP'; // 👈 reemplazar
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->setFrom('info@deepcreeksolutions.es', 'Formulario Web');
+        $mail->addAddress('info@deepcreeksolutions.es');
 
-        // Remitente y destinatario
-        $mail->setFrom('form@tu-dominio.com', 'Formulario Web');
-        $mail->addAddress('destino@tu-dominio.com', 'Destinatario');
-
-        // Contenido
         $mail->isHTML(true);
         $mail->Subject = 'Nueva consulta desde el formulario';
         $mail->Body = "

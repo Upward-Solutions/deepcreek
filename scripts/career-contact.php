@@ -17,25 +17,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = new PHPMailer(true);
 
     try {
-        // Configuración SMTP (ejemplo con Mailtrap para pruebas)
         $mail->isSMTP();
-        $mail->Host       = 'sandbox.smtp.mailtrap.io';
+        $mail->Host       = 'c2661787.ferozo.com';
         $mail->SMTPAuth   = true;
+        $mail->Username   = 'info@deepcreeksolutions.es';
+        $mail->Password   = '/loUkDq1cU';
         $mail->Port       = 587;
-        $mail->Username   = 'TU_USERNAME_MAILTRAP';
-        $mail->Password   = 'TU_PASSWORD_MAILTRAP';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->setFrom('info@deepcreeksolutions.es', 'Formulario Web');
+        $mail->addAddress('info@deepcreeksolutions.es');
 
-        // Remitente y destinatario
-        $mail->setFrom('form@tu-dominio.com', 'Formulario Web');
-        $mail->addAddress('destino@tu-dominio.com', 'RRHH');
-
-        // Adjuntar CV si se subió
         if (!empty($_FILES['cvadjunto']['tmp_name'])) {
             $mail->addAttachment($_FILES['cvadjunto']['tmp_name'], $_FILES['cvadjunto']['name']);
         }
 
-        // Contenido
         $mail->isHTML(true);
         $mail->Subject = 'Nueva postulación desde el formulario web';
         $mail->Body = "
