@@ -1200,6 +1200,28 @@
       class="home wp-singular page-template page-template-elementor_header_footer page page-id-193 wp-custom-logo wp-embed-responsive wp-theme-generatepress wp-child-theme-generatepress_child translatepress-es_ES ehf-footer ehf-template-generatepress ehf-stylesheet-generatepress_child no-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover full-width-content elementor-default elementor-template-full-width elementor-kit-186 elementor-page elementor-page-193 modula-best-grid-gallery"
       itemtype="https://schema.org/WebPage" itemscope><a class="screen-reader-text skip-link" href="#content"
                                                          title="Saltar al contenido">Saltar al contenido</a>
+<div id="flash" style="display:none;
+                       background: #4caf50;
+                       color: white;
+                       padding: 10px;
+                       position: fixed;
+                       top: 20px;
+                       right: 20px;
+                       border-radius: 5px;
+                       z-index: 100000000000;">
+    ¡Tu contacto fue enviado con éxito!
+</div>
+<div id="flash-error" style="display:none;
+                       background: #f44336;
+                       color: white;
+                       padding: 10px;
+                       position: fixed;
+                       top: 20px;
+                       right: 20px;
+                       border-radius: 5px;
+                        z-index: 100000000000;">
+    No se pudo enviar el contacto, intentá de nuevo más tarde.
+</div>
 <header class="site-header has-inline-mobile-toggle" id="masthead" aria-label="Sitio"
         itemtype="https://schema.org/WPHeader" itemscope>
     <div class="inside-header grid-container">
@@ -2145,7 +2167,7 @@
                                                                                                aria-atomic="true"></p>
                                                             <ul></ul>
                                                         </div>
-                                                        <form action="" method="post"
+                                                        <form action="./scripts/contact.php" method="post"
                                                               class="wpcf7-form init"
                                                               aria-label="Formulario de contacto"
                                                               novalidate="novalidate" data-status="init">
@@ -2930,5 +2952,19 @@ var ElementPackConfig = {
 <script id="modula-js-before"> const modulaMetaVars = []; </script>
 <script src="https://deepcreeksolutions.com/wp-content/plugins/modula-best-grid-gallery/assets/js/front/jquery-modula.min.js?ver=2.12.24"
         id="modula-js"></script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("status") === "ok") {
+        const flash = document.getElementById("flash");
+        flash.style.display = "block";
+        setTimeout(() => flash.style.display = "none", 4000);
+    }
+    if (params.get("status") === "error") {
+        const flash = document.getElementById("flash-error");
+        flash.style.display = "block";
+        setTimeout(() => flash.style.display = "none", 4000);
+    }
+</script>
+
 </body>
 </html>
