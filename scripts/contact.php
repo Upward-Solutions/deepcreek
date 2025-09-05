@@ -41,10 +41,10 @@ try {
     ";
     $mail->AltBody = "Nombre: $name\nEmail: $email\nTeléfono: $phone\nMensaje:\n$message";
     $mail->send();
-    header("Location: /index.html?status=ok");
+    header("Location: site/index.html?status=ok");
 } catch (Exception $e) {
 //     echo "Error: {$mail->ErrorInfo}";
-    header("Location: /index.html?status=error");
+    header("Location: site/index.html?status=error");
 } finally {
     exit;
 }

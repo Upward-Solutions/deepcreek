@@ -51,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->send();
 
         // Redirigir con parámetro de éxito
-        header("Location: /index.html?status=ok");
+        header("Location: site/index.html?status=ok");
         exit;
     } catch (Exception $e) {
         // Redirigir con parámetro de error
-        header("Location: /index.html?status=error");
+        header("Location: site/index.html?status=error");
         exit;
     }
 }
